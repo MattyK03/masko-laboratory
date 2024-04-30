@@ -20,16 +20,16 @@ function createWindow() {
 	const startUrl =
 		process.env.ELECTRON_START_URL ||
 		url.format({
-			pathname: path.join(__dirname, "../public/index.html"),
+			pathname: path.join(__dirname, "../src/index.tsx"),
 			protocol: "file:",
 			slashes: true,
 		});
 
-	mainWindow.loadURL(startUrl);
-	// mainWindow.loadURL('http://localhost:3000');
+	// mainWindow.loadURL(startUrl);
+	mainWindow.loadURL("http://localhost:3000");
 
 	// Отображаем средства разработчика.
-	// mainWindow.webContents.openDevTools()
+	mainWindow.webContents.openDevTools();
 }
 
 // Этот метод вызывается когда приложение инициализируется
