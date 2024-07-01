@@ -2,7 +2,7 @@ import { useState } from "react";
 import LaboratoryTab from "../../components/Laboratory/LaboratoryTab/LaboratoryTab";
 import Canvas from "./Canvas/Canvas";
 import Clock from "./Clock/Clock";
-import Gazeta from "./Gazeta/Gazeta";
+import Exam from "./Exam/Exam";
 import ViewerLab from "./ImageViewer/ViewerLab";
 import Zachet from "./Zachet";
 
@@ -10,11 +10,11 @@ const Murtazina = () => {
 	const [activeTab, setActiveTab] = useState<string>("GAME");
 
 	const tabs: any = {
-		GAZETA: <Gazeta />,
 		IMAGEVIEWER: <ViewerLab />,
 		CLOCK: <Clock />,
 		CANVAS: <Canvas />,
 		ZACHET: <Zachet />,
+		EXAM: <Exam />,
 	};
 
 	console.log(activeTab);
@@ -45,6 +45,11 @@ const Murtazina = () => {
 				<LaboratoryTab
 					title={"Zachet"}
 					tabKey={"ZACHET"}
+					setActiveTab={setActiveTab}
+				/>
+				<LaboratoryTab
+					title={"Exam"}
+					tabKey={"EXAM"}
 					setActiveTab={setActiveTab}
 				/>
 			</div>
