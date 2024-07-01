@@ -10,7 +10,7 @@ const MatrixOperations = () => {
 	);
 	const [scalar, setScalar] = useState(1);
 
-	const [activeMode, setActiveMode] = useState();
+	const [activeMode, setActiveMode] = useState(false);
 
 	const multiplyMatrices = () => {
 		const result = Array(4)
@@ -35,30 +35,44 @@ const MatrixOperations = () => {
 		<div>
 			<h2>Matrix A</h2>
 			<MatrixInput matrix={matrixA} setMatrix={setMatrixA} />
-			<h2 style={{ marginTop: "20px" }}>Matrix B</h2>
-			<MatrixInput matrix={matrixB} setMatrix={setMatrixB} />
 			<Button
 				variant="contained"
 				color="primary"
-				onClick={multiplyMatrices}
+				onClick={() => setActiveMode((prev) => !prev)}
 			>
-				Multiply Matrices
+				Change mode
 			</Button>
-			<h2>Multiply Matrix A by Scalar</h2>
-			<TextField
-				style={{ backgroundColor: "#fff", marginRight: "10px" }}
-				value={scalar}
-				onChange={(e) => setScalar(parseFloat(e.target.value))}
-				type="number"
-				variant="outlined"
-			/>
-			<Button
-				variant="contained"
-				color="secondary"
-				onClick={multiplyMatrixByScalar}
-			>
-				Multiply by Scalar
-			</Button>
+			{activeMode ? (
+				<>
+					<h2 style={{ marginTop: "20px" }}>Matrix B</h2>
+					<MatrixInput matrix={matrixB} setMatrix={setMatrixB} />
+					<Button
+						variant="contained"
+						color="primary"
+						onClick={multiplyMatrices}
+					>
+						Multiply Matrices
+					</Button>
+				</>
+			) : (
+				<>
+					<h2>Multiply Matrix A by Scalar</h2>
+					<TextField
+						style={{ backgroundColor: "#fff", marginRight: "10px" }}
+						value={scalar}
+						onChange={(e) => setScalar(parseFloat(e.target.value))}
+						type="number"
+						variant="outlined"
+					/>
+					<Button
+						variant="contained"
+						color="secondary"
+						onClick={multiplyMatrixByScalar}
+					>
+						Multiply by Scalar
+					</Button>
+				</>
+			)}
 			<h2>Result</h2>
 			<MatrixInput matrix={resultMatrix} setMatrix={() => {}} />
 		</div>
