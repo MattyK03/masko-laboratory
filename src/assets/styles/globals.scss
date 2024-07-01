@@ -1,0 +1,19 @@
+$primary-color: #292929;
+$secondary-color: #9d3bff;
+
+$secondary-box-shadow: #9d3bffb3;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
+body {
+	margin: 0;
+	background-color: $primary-color;
+	font-family: "Inter", sans-serif;
+}
+
+.teacher__wrapper {
+	height: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}

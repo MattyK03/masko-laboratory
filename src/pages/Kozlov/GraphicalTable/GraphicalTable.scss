@@ -1,0 +1,29 @@
+.table_container {
+	overflow-x: auto;
+	max-height: 599px;
+	overflow-y: hidden;
+	overflow: scroll;
+}
+
+.table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+th,
+td {
+	border: 1px solid white;
+	color: white;
+	padding: 8px;
+}
+
+th {
+	// Additional styling for headers can go here if needed
+}
+
+td {
+	max-width: 104px;
+	input {
+		width: 100%;
+	}
+}

@@ -1,4 +1,3 @@
-// Модули для управления приложением и создания окна
 const { app, BrowserWindow } = require("electron");
 const path = require("path");
 const url = require("url");
@@ -11,25 +10,37 @@ function createWindow() {
 		height: 600,
 		webPreferences: {
 			nodeIntegration: true,
+			preload: path.join(__dirname, "./preload.js"),
 		},
 	});
 
-	// и загрузить index.html приложения.
-	//mainWindow.loadFile('index.html')
-
+	// Определяем URL для загрузки в зависимости от окружения
 	const startUrl =
 		process.env.ELECTRON_START_URL ||
 		url.format({
-			pathname: path.join(__dirname, "../src/index.tsx"),
+			pathname: path.join(__dirname, "../build/index.html"),
 			protocol: "file:",
 			slashes: true,
 		});
 
-	// mainWindow.loadURL(startUrl);
-	mainWindow.loadURL("http://localhost:3000");
+	mainWindow.loadURL(startUrl);
+	// mainWindow.loadURL("http://localhost:3000");
 
-	// Отображаем средства разработчика.
+	// Отображаем средства разработчика (раскомментируйте при необходимости).
 	mainWindow.webContents.openDevTools();
+
+	mainWindow.webContents.session.webRequest.onHeadersReceived(
+		(details, callback) => {
+			callback({
+				responseHeaders: {
+					...details.responseHeaders,
+					"Content-Security-Policy": [
+						"default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: *;",
+					],
+				},
+			});
+		}
+	);
 }
 
 // Этот метод вызывается когда приложение инициализируется
@@ -53,4 +64,4 @@ app.on("window-all-closed", function () {
 });
 
 // В этом файле вы можете включить остальную часть основного процесса вашего приложения
-//  Вы также можете поместить их в отдельные файлы и подключить через require.
+// Вы также можете поместить их в отдельные файлы и подключить через require.

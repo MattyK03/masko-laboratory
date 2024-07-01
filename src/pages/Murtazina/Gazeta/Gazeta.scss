@@ -1,0 +1,48 @@
+.container {
+	max-width: 210mm;
+	margin: 20px auto;
+	background: white;
+	padding: 20mm;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	line-height: 1.6;
+}
+
+.page {
+	page-break-after: always;
+}
+
+header {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+header h1 {
+	font-size: 32px;
+	margin: 0;
+}
+
+.article {
+	margin-bottom: 20px;
+}
+
+.article img {
+	max-width: 100%;
+	height: auto;
+	margin: 10px 0;
+}
+
+.columns {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	width: 48%;
+}
+
+footer {
+	text-align: center;
+	margin-top: 20px;
+	font-size: 12px;
+	color: #555;
+}

@@ -1,0 +1,41 @@
+.game-area {
+	background-color: #fff;
+	border: 1px solid black;
+	position: relative;
+	overflow: hidden;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+.square {
+	width: 30px;
+	height: 30px;
+	background-color: red;
+	position: absolute;
+}
+
+.line {
+	width: 5px;
+	height: 100%;
+	background-color: black;
+	position: absolute;
+}
+
+.restart {
+	width: 100px;
+	background-color: #4000c0;
+	padding: 12px;
+	border-radius: 5px;
+	font-size: 16px;
+	font-weight: 600;
+	color: #fff;
+
+	transition: all 0.15s;
+}
+
+.restart:hover {
+	background-color: #4000ff;
+}
